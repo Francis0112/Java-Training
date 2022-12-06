@@ -7,9 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 
 public class Coke_float_layout extends JFrame {
-
 	/**
 	 * 
 	 */
@@ -17,6 +17,7 @@ public class Coke_float_layout extends JFrame {
 	private int a = 0;
 	private JButton button1;
 	private JButton button2;
+	private JButton button3;
 	private JLabel label1;
 	
 	public Coke_float_layout() {
@@ -32,8 +33,13 @@ public class Coke_float_layout extends JFrame {
 		button1.addActionListener(e -> bro());
 		
 		button2 = new JButton();
-		button2.setText("Open new window");
+		button2.setText("Open Hackerman page2");
 		button2.addActionListener(e -> new_window());
+		
+		button3 = new JButton();
+		button3.setText("Open Hackerman page3");
+		button3.addActionListener(e -> new_window2());
+		
 		
 		this.setTitle("Coke Float Layout");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -43,7 +49,7 @@ public class Coke_float_layout extends JFrame {
 		this.add(label1);
 		this.add(button1);
 		this.add(button2);
-		this.add(new JButton("1"));
+		this.add(button3);
 		this.add(new JButton("2"));
 		this.add(new JButton("3"));
 		this.add(new JButton("4"));
@@ -52,7 +58,7 @@ public class Coke_float_layout extends JFrame {
 		this.add(new JButton("7"));
 		this.add(new JButton("8"));
 		this.add(new JButton("9"));
-		this.setVisible(true);	
+		this.setVisible(true);
 	}
 	
 	private void new_window() {
@@ -60,9 +66,12 @@ public class Coke_float_layout extends JFrame {
 		//JOptionPane.showMessageDialog(null, "wassup bro? ","what is the title again?",JOptionPane.PLAIN_MESSAGE);
 		//String name = JOptionPane.showInputDialog("What is your name?");
 		//System.out.println("your name: "+name);
-		TextBox_page page2 = new TextBox_page();
-		
-		
+		new TextBox_page();
+	}
+	
+	
+	private void new_window2() {
+		new Tool_bar();
 	}
 
 	private void bro() {
