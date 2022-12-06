@@ -71,5 +71,4 @@ public class Coke_float_layout extends JFrame {
 		a++;
 		System.out.println("Click count: "+a);
 	}
-
 }

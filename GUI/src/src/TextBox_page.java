@@ -38,6 +38,7 @@ public class TextBox_page extends JFrame {
 		// TODO Auto-generated method stub
 		System.out.println(txtb1.getText());
 		txtb1.setText("");
+		String name = "francis";
 		return null;
 	}
 }
