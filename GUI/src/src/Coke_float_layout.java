@@ -18,6 +18,7 @@ public class Coke_float_layout extends JFrame {
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
+	private JButton button4;
 	private JLabel label1;
 	
 	public Coke_float_layout() {
@@ -40,6 +41,10 @@ public class Coke_float_layout extends JFrame {
 		button3.setText("Open Hackerman page3");
 		button3.addActionListener(e -> new_window2());
 		
+		button4 = new JButton();
+		button4.setText("Open Hackerman page4");
+		button4.addActionListener(e -> new_window3());
+		
 		
 		this.setTitle("Coke Float Layout");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -50,7 +55,7 @@ public class Coke_float_layout extends JFrame {
 		this.add(button1);
 		this.add(button2);
 		this.add(button3);
-		this.add(new JButton("2"));
+		this.add(button4);
 		this.add(new JButton("3"));
 		this.add(new JButton("4"));
 		this.add(new JButton("5"));
@@ -72,6 +77,10 @@ public class Coke_float_layout extends JFrame {
 	
 	private void new_window2() {
 		new Tool_bar();
+	}
+	
+	private void new_window3() {
+		new Login();
 	}
 
 	private void bro() {
