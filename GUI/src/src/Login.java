@@ -3,13 +3,12 @@ package src;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.BoxLayout;
 import javax.swing.JPasswordField;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Login extends JFrame {
 	/**
@@ -27,6 +26,8 @@ public class Login extends JFrame {
 		}
 		else {
 			result_label.setText("Invalid Login.");
+			user_text.setText("");
+			pass_text.setText("");
 		}
 	}
 	
@@ -35,6 +36,13 @@ public class Login extends JFrame {
 		pass_text.setText("");
 		result_label.setText("");
 	}
+	
+	public void bork(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+			System.out.println("wassup "+user_text.getText()+" Nigger");
+		}
+	}
+	
 	
 	public Login() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -60,16 +68,38 @@ public class Login extends JFrame {
 		user_text.setColumns(10);
 		
 		pass_text = new JPasswordField();
+		pass_text.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					log();
+				}
+			}
+		});
 		pass_text.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		pass_text.setBounds(10, 109, 310, 32);
 		getContentPane().add(pass_text);
 		
 		JButton login_btn = new JButton("LOGIN");
+		login_btn.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+					log();
+				}
+			}
+		});
 		login_btn.addActionListener(e -> log());
 		login_btn.setBounds(10, 212, 310, 38);
 		getContentPane().add(login_btn);
 		
 		JButton clear_btn = new JButton("CLEAR");
+		clear_btn.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				clear_text();
+			}
+		});
 		clear_btn.addActionListener(e -> clear_text());
 		clear_btn.setBounds(10, 261, 310, 38);
 		getContentPane().add(clear_btn);
