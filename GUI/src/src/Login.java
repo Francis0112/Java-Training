@@ -2,6 +2,7 @@ package src;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Font;
@@ -9,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 public class Login extends JFrame {
 	/**
@@ -20,14 +22,22 @@ public class Login extends JFrame {
 	private JLabel result_label;
 	
 	
-	private void log() {
-		if(user_text.getText().equals("francis") && pass_text.getText().equals("123")) {
+	private void log() throws SQLException {
+		Admin_connect ad = new Admin_connect();
+		ad.pst = ad.con.prepareStatement("select username, password from admin where username=? and password=?");
+		ad.pst.setString(1, user_text.getText());
+		ad.pst.setString(2, pass_text.getText());
+		ad.rs = ad.pst.executeQuery();
+		if(ad.rs.next()) {
 			result_label.setText("Welcome "+user_text.getText()+"! hackerman System.");
+			JOptionPane.showMessageDialog(null, "Welcome "+user_text.getText()+"! Hackerman System.");
 		}
 		else {
-			result_label.setText("Invalid Login.");
+			System.out.println("Invalid login");
 			user_text.setText("");
 			pass_text.setText("");
+			result_label.setText("Invalid login");
+			user_text.grabFocus();
 		}
 	}
 	
@@ -35,12 +45,7 @@ public class Login extends JFrame {
 		user_text.setText("");
 		pass_text.setText("");
 		result_label.setText("");
-	}
-	
-	public void bork(KeyEvent e) {
-		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-			System.out.println("wassup "+user_text.getText()+" Nigger");
-		}
+		user_text.grabFocus();
 	}
 	
 	
@@ -72,7 +77,12 @@ public class Login extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-					log();
+					try {
+						log();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -85,11 +95,23 @@ public class Login extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-					log();
+					try {
+						log();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
-		login_btn.addActionListener(e -> log());
+		login_btn.addActionListener(e -> {
+			try {
+				log();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		login_btn.setBounds(10, 212, 310, 38);
 		getContentPane().add(login_btn);
 		
