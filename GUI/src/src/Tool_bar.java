@@ -76,7 +76,5 @@ public class Tool_bar extends JFrame {
 		this.add(jbar);
 		this.setVisible(true);
 		wasup_bro();
-		
-		
 	}
 }

@@ -6,11 +6,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login extends JFrame {
 	/**
@@ -20,24 +26,46 @@ public class Login extends JFrame {
 	private JTextField user_text;
 	private JPasswordField pass_text;
 	private JLabel result_label;
-	
-	
+		
 	private void log() throws SQLException {
-		Admin_connect ad = new Admin_connect();
-		ad.pst = ad.con.prepareStatement("select username, password from admin where username=? and password=?");
-		ad.pst.setString(1, user_text.getText());
-		ad.pst.setString(2, pass_text.getText());
-		ad.rs = ad.pst.executeQuery();
-		if(ad.rs.next()) {
-			result_label.setText("Welcome "+user_text.getText()+"! hackerman System.");
-			JOptionPane.showMessageDialog(null, "Welcome "+user_text.getText()+"! Hackerman System.");
-		}
-		else {
-			System.out.println("Invalid login");
-			user_text.setText("");
-			pass_text.setText("");
-			result_label.setText("Invalid login");
-			user_text.grabFocus();
+		try {
+			Admin_connect ad = new Admin_connect();
+			ad.pst = ad.con.prepareStatement("select username, password from admin where username=? and password=PASSWORD(?)");
+			String username = user_text.getText().trim();
+			String password = pass_text.getText().trim();
+			ad.pst.setString(1, username);
+			ad.pst.setString(2, password);
+			ad.rs = ad.pst.executeQuery();
+			if(ad.rs.next()) {
+				String name = ad.rs.getString("username");
+				if (name.equals(username)) {
+					result_label.setText("Welcome " + user_text.getText() + "! hackerman System.");
+					System.out.println("Welcome "+username+"! Hackerman System.");
+					JOptionPane.showMessageDialog(null, "Welcome " + user_text.getText() + "! Hackerman System.");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Invalid login");
+					System.out.println("Invalid login");
+					user_text.setText("");
+					pass_text.setText("");
+					result_label.setText("Invalid login");
+					user_text.grabFocus();
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Invalid login");
+				System.out.println("Invalid login");
+				user_text.setText("");
+				pass_text.setText("");
+				result_label.setText("Invalid login");
+				user_text.grabFocus();
+			}
+		} catch (HeadlessException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "Something went wrong. Error!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "Database lost Connection. Error!");
 		}
 	}
 	
@@ -49,12 +77,14 @@ public class Login extends JFrame {
 	}
 	
 	
+	
 	public Login() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBackground(new Color(255, 255, 255));
 		setTitle("Hackerman Login");
 		getContentPane().setLayout(null);
-		setSize(349,349);
+		setSize(349,384);
 		
 		JLabel user_label = new JLabel("Username:");
 		user_label.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -130,6 +160,20 @@ public class Login extends JFrame {
 		result_label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		result_label.setBounds(10, 174, 310, 27);
 		getContentPane().add(result_label);
+		
+		JLabel Register_label = new JLabel("Register");
+		Register_label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton()==MouseEvent.BUTTON1) {
+					new Register();
+				}
+			}
+		});
+		Register_label.setForeground(Color.BLUE);
+		Register_label.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		Register_label.setBounds(10, 310, 310, 27);
+		getContentPane().add(Register_label);
 		setVisible(true);
 	}
 }

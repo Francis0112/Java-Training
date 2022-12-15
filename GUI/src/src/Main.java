@@ -6,12 +6,32 @@ import java.util.Scanner;
 public class Main {
 	
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, InterruptedException {
 		// TODO Auto-generated method stub
 		//My_frame m = new My_frame();
 		new Coke_float_layout();
 		//sql_training();
+		//The_Timer the_Timer = new The_Timer();
+		//the_Timer.Oz();
+		//The_Thread the_Thread1 = new The_Thread();
+		//The_Thread2 the_Thread2 = new The_Thread2();
+		//the_Thread1.start();
+		//the_Thread1.join();
+		//the_Thread2.start();
 	}
+	
+	public static void sleeper() {
+		for (int i = 5; i > 0; i--) {
+			System.out.println(i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("Woke up... woaah");
+	}	
 	
 	public static void sql_training() throws SQLException {
 		Test_sql ts = new Test_sql();

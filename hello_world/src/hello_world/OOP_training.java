@@ -6,6 +6,18 @@ public class OOP_training {
 	
 	public static void main(String[] args) {
 		
+		//the_method();
+		Geners gen = new Geners();
+		generics(gen.names);
+		generics(gen.num);
+		generics(gen.dnum);
+		generics(gen.alpha);
+		
+	}
+	
+
+	private static void the_method() {
+		
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Enter type of parameters:\nRadius: ");
@@ -46,6 +58,34 @@ public class OOP_training {
 		scan.close();
 	}
 	
+	private static <T> void generics(T[] array) {
+		for (T x : array) {
+			System.out.print(x+" ");
+		}
+		System.out.println();
+	}
+	
+	private static <T> void generics(int[] array) {
+		for (int i : array) {
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+	
+	private static <T> void generics(double[] array) {
+		// TODO Auto-generated method stub
+		for (double d : array) {
+			System.out.print(d+" ");
+		}
+		System.out.println();
+	}
+	
+	private static <T> void generics(char[] array) {
+		for (char c : array) {
+			System.out.print(c+" ");
+		}
+		System.out.println();
+	}
 }
 
 

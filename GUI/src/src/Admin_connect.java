@@ -2,6 +2,8 @@ package src;
 
 import java.sql.*;
 
+import javax.swing.JOptionPane;
+
 public class Admin_connect {
 	
 	public Connection con;
@@ -21,10 +23,12 @@ public class Admin_connect {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/hello_world","root","");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Something went wrong. Error!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Database lost Connection. Error!");
 		}
 		
 	}
