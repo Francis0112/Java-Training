@@ -9,7 +9,8 @@ public class Main {
 	public static void main(String[] args) throws SQLException, InterruptedException {
 		// TODO Auto-generated method stub
 		//My_frame m = new My_frame();
-		new Coke_float_layout();
+		//new Coke_float_layout();
+		new Login();
 		//sql_training();
 		//The_Timer the_Timer = new The_Timer();
 		//the_Timer.Oz();

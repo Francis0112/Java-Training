@@ -42,6 +42,9 @@ public class Login extends JFrame {
 					result_label.setText("Welcome " + user_text.getText() + "! hackerman System.");
 					System.out.println("Welcome "+username+"! Hackerman System.");
 					JOptionPane.showMessageDialog(null, "Welcome " + user_text.getText() + "! Hackerman System.");
+					clear_text();
+					this.hide();
+					new Employee_View();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Invalid login");
@@ -80,7 +83,7 @@ public class Login extends JFrame {
 	
 	public Login() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(new Color(255, 255, 255));
 		setTitle("Hackerman Login");
 		getContentPane().setLayout(null);
