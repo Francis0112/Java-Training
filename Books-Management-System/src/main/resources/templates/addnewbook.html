@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Book Management System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	  <!-- Brand -->
+	  <a class="navbar-brand" th:href="@{/books}">Books Management System</a>
+
+	  <!-- Toggler/collapsibe Button -->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <!-- Navbar links -->
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/books}">VIEW BOOKS</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<br>
+	<br>
+	<div class ="container">
+		<div class="row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Add new Book </h1>
+					<div class ="card-body">
+						<form th:action="@{/books}" th:object = "${book_obj}" method="POST">
+							<div class="form-group">
+								<label>Book Title</label>
+								<input type="text" 
+								name="title" 
+								field="*{title}" 
+								class="form-control" 
+								placeholder="Enter Book title">
+							</div>
+							<div class="form-group">
+								<label>Book Author</label>
+								<input type="text" 
+								name="author" 
+								field="*{author}" 
+								class="form-control" 
+								placeholder="Enter Book author">
+							</div>
+							<div class="form-group">
+								<label>Book Origin</label>
+								<input type="text" 
+								name="origin" 
+								field="*{origin}" 
+								class="form-control" 
+								placeholder="Enter Book origin">
+							</div>
+							<div class="form-group">
+								<label>Book Description</label>
+								<input type="text" 
+								name="desc" 
+								field="*{desc}" 
+								class="form-control" 
+								placeholder="Enter Book description">
+							</div>
+							<div class="form-group">
+								<label>Book year</label>
+								<input type="text" 
+								name="year" 
+								field="*{year}" 
+								class="form-control" 
+								placeholder="Enter Book year">
+							</div>
+
+							<div class="box-footer">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

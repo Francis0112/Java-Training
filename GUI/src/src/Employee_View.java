@@ -57,7 +57,7 @@ public class Employee_View extends JFrame {
 		JButton add_btn = new JButton("ADD");
 		add_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Employee_UI();
+				new Employee_UI().requestFocus(null);;
 			}
 		});
 		add_btn.setBounds(6, 315, 107, 30);
