@@ -1,6 +1,7 @@
 package com.fdequito.BooksManagementSystem.Controller;
 
 import java.awt.print.Book;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,8 @@ public class BookController {
 		this.bookService = bookService;
 	}
 	
-	// handler method to handle list students and return mode view
+	// handler method to handle list books and return mode view
+	
 	@GetMapping("/books")
 	public String bookList(Model model) {
 		model.addAttribute("book_obj",bookService.getAllBooks());
@@ -60,7 +62,7 @@ public class BookController {
 	public String addBookForm(Model model) {
 		//create variable object to hold addnewbook.html form data
 		Book book = new Book();
-		//doggy is the variable to hold html data and pass it to book variable
+		//book_obj is the variable to hold html data and pass it to book variable
 		model.addAttribute("book_obj", book);
 		return "addnewbook";
 	}

@@ -46,6 +46,5 @@ public class BooksServiceImpl implements BookService {
 	public void deleteBookByID(long id) {
 		// TODO Auto-generated method stub
 		bookRepository.deleteById(id);
-		
 	}
 }
