@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <form th:action="@{/login}" method="POST" th:object="${user_obj}">
+  <form th:action="@{/login_form/{email}/{password}(email=${user_obj.email})(password=${user_obj.password})}" method="POST" th:object="${user_obj}">
     <section class="vh-100" style="background-color: #133331;">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -17,6 +17,10 @@
               <div class="card-body p-5 text-center">
 
                 <h3 class="mb-5">Sign in</h3>
+
+                <div th:if="${param.ramen}">
+                  <div class="alert alert-danger">Invalid login!</div>
+                </div>
 
                 <div class="form-outline mb-4">
                   <input type="email" placeholder="email" id="email" th:field="*{email}" class="form-control form-control-lg" required autofocus="autofocus" />

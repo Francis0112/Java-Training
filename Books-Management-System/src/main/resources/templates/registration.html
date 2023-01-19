@@ -9,11 +9,6 @@
 <body>
 
 <form th:action="@{/register}" method="POST" th:object="${user_obj}">
-  <!--success message alert-->
-   <div th:if="${param.ramen}">
-    <div class="alert alert-info">Registration complete!</div>
-  </div>
-
   <section class="vh-100" style="background-color: #133331;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -22,6 +17,11 @@
             <div class="card-body p-5 text-center">
 
               <h3 class="mb-5">Registration</h3>
+
+              <!--success message alert-->
+              <div th:if="${param.ramen}">
+                <div class="alert alert-info">Registration complete!</div>
+              </div>
 
               <div class="form-outline mb-4">
                 <input type="text" placeholder="Firstname" id="firstname" th:field="*{firstname}" class="form-control form-control-lg" required autofocus="autofocus" />
@@ -45,7 +45,7 @@
 
               <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
               <br>
-              <span>Already Registered? <a href="/" th:href="@{/login}">Login here</span>
+              <span>Already Registered? <a href="/" th:href="@{/login_form}">Login here</span>
 
               <hr class="my-4">
               

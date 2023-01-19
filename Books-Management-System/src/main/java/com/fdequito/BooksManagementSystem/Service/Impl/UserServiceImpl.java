@@ -20,8 +20,7 @@ public class UserServiceImpl implements UserService {
 		super();
 		this.userRepository = userRepository;
 	}
-
-
+	
 	@Override
 	public User save(UserRegistrationDTO userRegistrationDTO) {
 		// TODO Auto-generated method stub
@@ -32,6 +31,18 @@ public class UserServiceImpl implements UserService {
 				userRegistrationDTO.getPassword(),
 				Arrays.asList(new Role("ROLE_USER")));
 		return userRepository.save(user);
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userRepository.findByEmail(email);
+	}
+
+	@Override
+	public User findByPassword(String password) {
+		// TODO Auto-generated method stub
+		return userRepository.findByPassword(password);
 	}
 
 }
