@@ -8,7 +8,10 @@ public class BooksManagementSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BooksManagementSystemApplication.class, args);
-		String name = "francis";
-		System.out.println(name);
+		Sam sam = new Sam();
+		System.out.println(sam.toString());
+		System.out.println(sam.name="francis");
 	}
 }
+
+

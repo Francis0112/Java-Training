@@ -13,13 +13,14 @@ import com.fdequito.BooksManagementSystem.Service.Web.DTO.UserRegistrationDTO;
 @Service
 public class UserServiceImpl implements UserService {
 
-	
+
 	private UserRepository userRepository;
 	
 	public UserServiceImpl(UserRepository userRepository) {
 		super();
 		this.userRepository = userRepository;
 	}
+	
 	
 	@Override
 	public User save(UserRegistrationDTO userRegistrationDTO) {
