@@ -1,2 +1,2 @@
 # Java-Training
-work training
+spring boot, jframe, mysql 
